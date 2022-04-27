@@ -1,23 +1,23 @@
 from clvm_tools import binutils
 from clvm_tools.clvmc import compile_clvm_text
 
-from flaxlight.full_node.generator import run_generator
-from flaxlight.full_node.mempool_check_conditions import get_name_puzzle_conditions
-from flaxlight.types.blockchain_format.program import Program, SerializedProgram
-from flaxlight.types.blockchain_format.sized_bytes import bytes32
-from flaxlight.types.condition_with_args import ConditionWithArgs
-from flaxlight.types.name_puzzle_condition import NPC
-from flaxlight.types.generator_types import BlockGenerator, GeneratorArg
-from flaxlight.util.clvm import int_to_bytes
-from flaxlight.util.condition_tools import ConditionOpcode
-from flaxlight.util.ints import uint32
-from flaxlight.wallet.puzzles.load_clvm import load_clvm
+from cryptodogelight.full_node.generator import run_generator
+from cryptodogelight.full_node.mempool_check_conditions import get_name_puzzle_conditions
+from cryptodogelight.types.blockchain_format.program import Program, SerializedProgram
+from cryptodogelight.types.blockchain_format.sized_bytes import bytes32
+from cryptodogelight.types.condition_with_args import ConditionWithArgs
+from cryptodogelight.types.name_puzzle_condition import NPC
+from cryptodogelight.types.generator_types import BlockGenerator, GeneratorArg
+from cryptodogelight.util.clvm import int_to_bytes
+from cryptodogelight.util.condition_tools import ConditionOpcode
+from cryptodogelight.util.ints import uint32
+from cryptodogelight.wallet.puzzles.load_clvm import load_clvm
 
 MAX_COST = int(1e15)
 COST_PER_BYTE = int(12000)
 
 
-DESERIALIZE_MOD = load_clvm("flaxlightlisp_deserialisation.clvm", package_or_requirement="flaxlight.wallet.puzzles")
+DESERIALIZE_MOD = load_clvm("cryptodogelightlisp_deserialisation.clvm", package_or_requirement="cryptodogelight.wallet.puzzles")
 
 
 GENERATOR_CODE = """

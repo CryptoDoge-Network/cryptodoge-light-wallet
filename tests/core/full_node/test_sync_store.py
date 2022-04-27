@@ -2,8 +2,8 @@ import asyncio
 
 import pytest
 
-from flaxlight.full_node.sync_store import SyncStore
-from flaxlight.util.hash import std_hash
+from cryptodogelight.full_node.sync_store import SyncStore
+from cryptodogelight.util.hash import std_hash
 
 
 @pytest.fixture(scope="module")

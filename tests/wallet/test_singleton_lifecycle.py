@@ -5,16 +5,16 @@ from typing import List, Tuple
 from blspy import G2Element
 from clvm_tools import binutils
 
-from flaxlight.types.blockchain_format.program import Program, INFINITE_COST
-from flaxlight.types.announcement import Announcement
-from flaxlight.types.blockchain_format.coin import Coin
-from flaxlight.types.blockchain_format.sized_bytes import bytes32
-from flaxlight.types.coin_spend import CoinSpend
-from flaxlight.types.spend_bundle import SpendBundle
-from flaxlight.util.condition_tools import ConditionOpcode
+from cryptodogelight.types.blockchain_format.program import Program, INFINITE_COST
+from cryptodogelight.types.announcement import Announcement
+from cryptodogelight.types.blockchain_format.coin import Coin
+from cryptodogelight.types.blockchain_format.sized_bytes import bytes32
+from cryptodogelight.types.coin_spend import CoinSpend
+from cryptodogelight.types.spend_bundle import SpendBundle
+from cryptodogelight.util.condition_tools import ConditionOpcode
 
-from flaxlight.util.ints import uint64
-from flaxlight.wallet.puzzles.load_clvm import load_clvm
+from cryptodogelight.util.ints import uint64
+from cryptodogelight.wallet.puzzles.load_clvm import load_clvm
 
 from tests.core.full_node.test_conditions import bt, check_spend_bundle_validity, initial_blocks
 

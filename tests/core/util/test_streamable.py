@@ -6,14 +6,14 @@ import io
 from clvm_tools import binutils
 from pytest import raises
 
-from flaxlight.protocols.wallet_protocol import RespondRemovals
-from flaxlight.types.blockchain_format.coin import Coin
-from flaxlight.types.blockchain_format.program import Program
-from flaxlight.types.blockchain_format.sized_bytes import bytes32
-from flaxlight.types.full_block import FullBlock
-from flaxlight.types.weight_proof import SubEpochChallengeSegment
-from flaxlight.util.ints import uint8, uint32
-from flaxlight.util.streamable import (
+from cryptodogelight.protocols.wallet_protocol import RespondRemovals
+from cryptodogelight.types.blockchain_format.coin import Coin
+from cryptodogelight.types.blockchain_format.program import Program
+from cryptodogelight.types.blockchain_format.sized_bytes import bytes32
+from cryptodogelight.types.full_block import FullBlock
+from cryptodogelight.types.weight_proof import SubEpochChallengeSegment
+from cryptodogelight.util.ints import uint8, uint32
+from cryptodogelight.util.streamable import (
     Streamable,
     streamable,
     parse_bool,

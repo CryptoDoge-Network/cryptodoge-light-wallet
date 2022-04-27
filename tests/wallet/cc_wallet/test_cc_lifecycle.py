@@ -4,23 +4,23 @@ from typing import List, Tuple, Optional, Dict
 from blspy import PrivateKey, AugSchemeMPL, G2Element
 from clvm.casts import int_to_bytes
 
-from flaxlight.clvm.spend_sim import SpendSim, SimClient
-from flaxlight.types.blockchain_format.program import Program
-from flaxlight.types.blockchain_format.coin import Coin
-from flaxlight.types.blockchain_format.sized_bytes import bytes32
-from flaxlight.types.spend_bundle import SpendBundle
-from flaxlight.types.coin_spend import CoinSpend
-from flaxlight.types.mempool_inclusion_status import MempoolInclusionStatus
-from flaxlight.util.errors import Err
-from flaxlight.util.ints import uint64
-from flaxlight.wallet.lineage_proof import LineageProof
-from flaxlight.wallet.cc_wallet.cc_utils import (
+from cryptodogelight.clvm.spend_sim import SpendSim, SimClient
+from cryptodogelight.types.blockchain_format.program import Program
+from cryptodogelight.types.blockchain_format.coin import Coin
+from cryptodogelight.types.blockchain_format.sized_bytes import bytes32
+from cryptodogelight.types.spend_bundle import SpendBundle
+from cryptodogelight.types.coin_spend import CoinSpend
+from cryptodogelight.types.mempool_inclusion_status import MempoolInclusionStatus
+from cryptodogelight.util.errors import Err
+from cryptodogelight.util.ints import uint64
+from cryptodogelight.wallet.lineage_proof import LineageProof
+from cryptodogelight.wallet.cc_wallet.cc_utils import (
     CC_MOD,
     SpendableCC,
     construct_cc_puzzle,
     unsigned_spend_bundle_for_spendable_ccs,
 )
-from flaxlight.wallet.puzzles.genesis_checkers import (
+from cryptodogelight.wallet.puzzles.genesis_checkers import (
     GenesisById,
     GenesisByPuzhash,
     EverythingWithSig,

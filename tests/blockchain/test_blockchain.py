@@ -11,36 +11,36 @@ import pytest
 from blspy import AugSchemeMPL, G2Element
 from clvm.casts import int_to_bytes
 
-from flaxlight.consensus.block_rewards import calculate_base_farmer_reward
-from flaxlight.consensus.blockchain import ReceiveBlockResult
-from flaxlight.consensus.coinbase import create_farmer_coin
-from flaxlight.consensus.pot_iterations import is_overflow_block
-from flaxlight.full_node.bundle_tools import detect_potential_template_generator
-from flaxlight.types.blockchain_format.classgroup import ClassgroupElement
-from flaxlight.types.blockchain_format.coin import Coin
-from flaxlight.types.blockchain_format.foliage import TransactionsInfo
-from flaxlight.types.blockchain_format.program import SerializedProgram
-from flaxlight.types.blockchain_format.sized_bytes import bytes32
-from flaxlight.types.blockchain_format.slots import InfusedChallengeChainSubSlot
-from flaxlight.types.blockchain_format.vdf import VDFInfo, VDFProof
-from flaxlight.types.condition_opcodes import ConditionOpcode
-from flaxlight.types.condition_with_args import ConditionWithArgs
-from flaxlight.types.end_of_slot_bundle import EndOfSubSlotBundle
-from flaxlight.types.full_block import FullBlock
-from flaxlight.types.generator_types import BlockGenerator
-from flaxlight.types.spend_bundle import SpendBundle
-from flaxlight.types.unfinished_block import UnfinishedBlock
+from cryptodogelight.consensus.block_rewards import calculate_base_farmer_reward
+from cryptodogelight.consensus.blockchain import ReceiveBlockResult
+from cryptodogelight.consensus.coinbase import create_farmer_coin
+from cryptodogelight.consensus.pot_iterations import is_overflow_block
+from cryptodogelight.full_node.bundle_tools import detect_potential_template_generator
+from cryptodogelight.types.blockchain_format.classgroup import ClassgroupElement
+from cryptodogelight.types.blockchain_format.coin import Coin
+from cryptodogelight.types.blockchain_format.foliage import TransactionsInfo
+from cryptodogelight.types.blockchain_format.program import SerializedProgram
+from cryptodogelight.types.blockchain_format.sized_bytes import bytes32
+from cryptodogelight.types.blockchain_format.slots import InfusedChallengeChainSubSlot
+from cryptodogelight.types.blockchain_format.vdf import VDFInfo, VDFProof
+from cryptodogelight.types.condition_opcodes import ConditionOpcode
+from cryptodogelight.types.condition_with_args import ConditionWithArgs
+from cryptodogelight.types.end_of_slot_bundle import EndOfSubSlotBundle
+from cryptodogelight.types.full_block import FullBlock
+from cryptodogelight.types.generator_types import BlockGenerator
+from cryptodogelight.types.spend_bundle import SpendBundle
+from cryptodogelight.types.unfinished_block import UnfinishedBlock
 from tests.block_tools import create_block_tools_async, get_vdf_info_and_proof
-from flaxlight.util.errors import Err
-from flaxlight.util.hash import std_hash
-from flaxlight.util.ints import uint8, uint64, uint32
-from flaxlight.util.merkle_set import MerkleSet
-from flaxlight.util.recursive_replace import recursive_replace
+from cryptodogelight.util.errors import Err
+from cryptodogelight.util.hash import std_hash
+from cryptodogelight.util.ints import uint8, uint64, uint32
+from cryptodogelight.util.merkle_set import MerkleSet
+from cryptodogelight.util.recursive_replace import recursive_replace
 from tests.wallet_tools import WalletTool
 from tests.setup_nodes import bt, test_constants
 from tests.util.blockchain import create_blockchain
 from tests.util.keyring import TempKeyring
-from flaxlight.wallet.puzzles.p2_delegated_puzzle_or_hidden_puzzle import (
+from cryptodogelight.wallet.puzzles.p2_delegated_puzzle_or_hidden_puzzle import (
     DEFAULT_HIDDEN_PUZZLE_HASH,
     calculate_synthetic_secret_key,
 )

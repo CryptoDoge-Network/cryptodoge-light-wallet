@@ -4,14 +4,14 @@ import logging
 import pytest
 from clvm.casts import int_to_bytes
 
-from flaxlight.consensus.blockchain import ReceiveBlockResult
-from flaxlight.protocols import full_node_protocol, wallet_protocol
-from flaxlight.types.announcement import Announcement
-from flaxlight.types.condition_opcodes import ConditionOpcode
-from flaxlight.types.condition_with_args import ConditionWithArgs
-from flaxlight.types.spend_bundle import SpendBundle
-from flaxlight.util.errors import ConsensusError, Err
-from flaxlight.util.ints import uint64
+from cryptodogelight.consensus.blockchain import ReceiveBlockResult
+from cryptodogelight.protocols import full_node_protocol, wallet_protocol
+from cryptodogelight.types.announcement import Announcement
+from cryptodogelight.types.condition_opcodes import ConditionOpcode
+from cryptodogelight.types.condition_with_args import ConditionWithArgs
+from cryptodogelight.types.spend_bundle import SpendBundle
+from cryptodogelight.util.errors import ConsensusError, Err
+from cryptodogelight.util.ints import uint64
 from tests.wallet_tools import WalletTool
 from tests.setup_nodes import bt, setup_two_nodes, test_constants
 from tests.util.generator_tools_testing import run_and_get_removals_and_additions

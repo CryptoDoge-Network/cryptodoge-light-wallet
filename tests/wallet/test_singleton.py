@@ -1,10 +1,10 @@
 from clvm_tools import binutils
 
-from flaxlight.types.blockchain_format.program import Program, INFINITE_COST
-from flaxlight.types.announcement import Announcement
-from flaxlight.types.blockchain_format.sized_bytes import bytes32
-from flaxlight.util.condition_tools import parse_sexp_to_conditions
-from flaxlight.wallet.puzzles.load_clvm import load_clvm
+from cryptodogelight.types.blockchain_format.program import Program, INFINITE_COST
+from cryptodogelight.types.announcement import Announcement
+from cryptodogelight.types.blockchain_format.sized_bytes import bytes32
+from cryptodogelight.util.condition_tools import parse_sexp_to_conditions
+from cryptodogelight.wallet.puzzles.load_clvm import load_clvm
 
 SINGLETON_MOD = load_clvm("singleton_top_layer.clvm")
 LAUNCHER_PUZZLE = load_clvm("singleton_launcher.clvm")

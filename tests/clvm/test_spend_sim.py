@@ -2,11 +2,11 @@ import pytest
 
 from blspy import G2Element
 
-from flaxlight.clvm.spend_sim import SpendSim, SimClient
-from flaxlight.types.blockchain_format.sized_bytes import bytes32
-from flaxlight.types.blockchain_format.program import Program
-from flaxlight.types.spend_bundle import SpendBundle
-from flaxlight.types.coin_spend import CoinSpend
+from cryptodogelight.clvm.spend_sim import SpendSim, SimClient
+from cryptodogelight.types.blockchain_format.sized_bytes import bytes32
+from cryptodogelight.types.blockchain_format.program import Program
+from cryptodogelight.types.spend_bundle import SpendBundle
+from cryptodogelight.types.coin_spend import CoinSpend
 
 
 class TestSpendSim:

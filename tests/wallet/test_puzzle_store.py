@@ -6,11 +6,11 @@ import aiosqlite
 import pytest
 from blspy import AugSchemeMPL
 
-from flaxlight.util.db_wrapper import DBWrapper
-from flaxlight.util.ints import uint32
-from flaxlight.wallet.derivation_record import DerivationRecord
-from flaxlight.wallet.util.wallet_types import WalletType
-from flaxlight.wallet.wallet_puzzle_store import WalletPuzzleStore
+from cryptodogelight.util.db_wrapper import DBWrapper
+from cryptodogelight.util.ints import uint32
+from cryptodogelight.wallet.derivation_record import DerivationRecord
+from cryptodogelight.wallet.util.wallet_types import WalletType
+from cryptodogelight.wallet.wallet_puzzle_store import WalletPuzzleStore
 
 
 @pytest.fixture(scope="module")

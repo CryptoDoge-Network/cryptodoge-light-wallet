@@ -1,5 +1,5 @@
 from pathlib import Path
-from flaxlight.util.db_wrapper import DBWrapper
+from cryptodogelight.util.db_wrapper import DBWrapper
 import tempfile
 import aiosqlite
 

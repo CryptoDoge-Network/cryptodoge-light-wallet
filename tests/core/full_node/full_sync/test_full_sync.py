@@ -6,13 +6,13 @@ from typing import List
 
 import pytest
 
-from flaxlight.full_node.weight_proof import _validate_sub_epoch_summaries
-from flaxlight.protocols import full_node_protocol
-from flaxlight.types.blockchain_format.sub_epoch_summary import SubEpochSummary
-from flaxlight.types.full_block import FullBlock
-from flaxlight.types.peer_info import PeerInfo
-from flaxlight.util.hash import std_hash
-from flaxlight.util.ints import uint16
+from cryptodogelight.full_node.weight_proof import _validate_sub_epoch_summaries
+from cryptodogelight.protocols import full_node_protocol
+from cryptodogelight.types.blockchain_format.sub_epoch_summary import SubEpochSummary
+from cryptodogelight.types.full_block import FullBlock
+from cryptodogelight.types.peer_info import PeerInfo
+from cryptodogelight.util.hash import std_hash
+from cryptodogelight.util.ints import uint16
 from tests.core.node_height import node_height_exactly, node_height_between
 from tests.setup_nodes import bt, self_hostname, setup_n_nodes, setup_two_nodes, test_constants
 from tests.time_out_assert import time_out_assert

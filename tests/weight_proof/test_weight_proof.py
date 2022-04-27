@@ -6,22 +6,22 @@ from typing import Dict, List, Optional, Tuple
 import aiosqlite
 import pytest
 
-from flaxlight.consensus.block_header_validation import validate_finished_header_block
-from flaxlight.consensus.block_record import BlockRecord
-from flaxlight.consensus.blockchain import Blockchain
-from flaxlight.consensus.default_constants import DEFAULT_CONSTANTS
-from flaxlight.consensus.difficulty_adjustment import get_next_sub_slot_iters_and_difficulty
-from flaxlight.consensus.full_block_to_block_record import block_to_block_record
-from flaxlight.full_node.block_store import BlockStore
-from flaxlight.full_node.coin_store import CoinStore
-from flaxlight.server.start_full_node import SERVICE_NAME
-from flaxlight.types.blockchain_format.sized_bytes import bytes32
-from flaxlight.types.blockchain_format.sub_epoch_summary import SubEpochSummary
-from flaxlight.util.block_cache import BlockCache
+from cryptodogelight.consensus.block_header_validation import validate_finished_header_block
+from cryptodogelight.consensus.block_record import BlockRecord
+from cryptodogelight.consensus.blockchain import Blockchain
+from cryptodogelight.consensus.default_constants import DEFAULT_CONSTANTS
+from cryptodogelight.consensus.difficulty_adjustment import get_next_sub_slot_iters_and_difficulty
+from cryptodogelight.consensus.full_block_to_block_record import block_to_block_record
+from cryptodogelight.full_node.block_store import BlockStore
+from cryptodogelight.full_node.coin_store import CoinStore
+from cryptodogelight.server.start_full_node import SERVICE_NAME
+from cryptodogelight.types.blockchain_format.sized_bytes import bytes32
+from cryptodogelight.types.blockchain_format.sub_epoch_summary import SubEpochSummary
+from cryptodogelight.util.block_cache import BlockCache
 from tests.block_tools import test_constants
-from flaxlight.util.config import load_config
-from flaxlight.util.default_root import DEFAULT_ROOT_PATH
-from flaxlight.util.generator_tools import get_block_header
+from cryptodogelight.util.config import load_config
+from cryptodogelight.util.default_root import DEFAULT_ROOT_PATH
+from cryptodogelight.util.generator_tools import get_block_header
 from tests.setup_nodes import bt
 
 try:
@@ -30,16 +30,16 @@ except ImportError:
     pass
 
 
-from flaxlight.consensus.pot_iterations import calculate_iterations_quality
-from flaxlight.full_node.weight_proof import (  # type: ignore
+from cryptodogelight.consensus.pot_iterations import calculate_iterations_quality
+from cryptodogelight.full_node.weight_proof import (  # type: ignore
     WeightProofHandler,
     _map_sub_epoch_summaries,
     _validate_sub_epoch_segments,
     _validate_summaries_weight,
 )
-from flaxlight.types.full_block import FullBlock
-from flaxlight.types.header_block import HeaderBlock
-from flaxlight.util.ints import uint32, uint64
+from cryptodogelight.types.full_block import FullBlock
+from cryptodogelight.types.header_block import HeaderBlock
+from cryptodogelight.util.ints import uint32, uint64
 
 
 @pytest.fixture(scope="session")

@@ -1,11 +1,11 @@
 from typing import List, Tuple
 
-from flaxlight.full_node.mempool_check_conditions import get_name_puzzle_conditions
-from flaxlight.types.blockchain_format.coin import Coin
-from flaxlight.types.blockchain_format.sized_bytes import bytes32
-from flaxlight.types.full_block import FullBlock
-from flaxlight.types.generator_types import BlockGenerator
-from flaxlight.util.generator_tools import additions_for_npc
+from cryptodogelight.full_node.mempool_check_conditions import get_name_puzzle_conditions
+from cryptodogelight.types.blockchain_format.coin import Coin
+from cryptodogelight.types.blockchain_format.sized_bytes import bytes32
+from cryptodogelight.types.full_block import FullBlock
+from cryptodogelight.types.generator_types import BlockGenerator
+from cryptodogelight.util.generator_tools import additions_for_npc
 
 
 def run_and_get_removals_and_additions(

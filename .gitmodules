@@ -1,6 +1,6 @@
 [submodule "mozilla-ca"]
 	path = mozilla-ca
-	url = https://github.com/Chia-Network/mozilla-ca.git
-[submodule "flax-blockchain-gui"]
-	path = flax-blockchain-gui
-	url = https://github.com/Flax-Network/flax-blockchain-gui.git
+	url = https://github.com/CryptoDoge-Network/mozilla-ca.git
+[submodule "cryptodoge-gui"]
+	path = cryptodoge-gui
+	url = https://github.com/CryptoDoge-Network/cryptodoge-gui.git

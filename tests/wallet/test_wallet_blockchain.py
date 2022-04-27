@@ -5,14 +5,14 @@ from pathlib import Path
 import aiosqlite
 import pytest
 
-from flaxlight.consensus.blockchain import ReceiveBlockResult
-from flaxlight.protocols import full_node_protocol
-from flaxlight.types.blockchain_format.vdf import VDFProof
-from flaxlight.types.weight_proof import WeightProof
-from flaxlight.util.db_wrapper import DBWrapper
-from flaxlight.util.generator_tools import get_block_header
-from flaxlight.wallet.key_val_store import KeyValStore
-from flaxlight.wallet.wallet_blockchain import WalletBlockchain
+from cryptodogelight.consensus.blockchain import ReceiveBlockResult
+from cryptodogelight.protocols import full_node_protocol
+from cryptodogelight.types.blockchain_format.vdf import VDFProof
+from cryptodogelight.types.weight_proof import WeightProof
+from cryptodogelight.util.db_wrapper import DBWrapper
+from cryptodogelight.util.generator_tools import get_block_header
+from cryptodogelight.wallet.key_val_store import KeyValStore
+from cryptodogelight.wallet.wallet_blockchain import WalletBlockchain
 from tests.setup_nodes import test_constants, setup_node_and_wallet
 
 

@@ -9,23 +9,23 @@ import pytest
 from blspy import AugSchemeMPL
 from chiapos import DiskPlotter
 
-from flaxlight.consensus.coinbase import create_puzzlehash_for_pk
-from flaxlight.plotting.util import stream_plot_info_ph, stream_plot_info_pk, PlotRefreshResult, PlotRefreshEvents
-from flaxlight.plotting.manager import PlotManager
-from flaxlight.protocols import farmer_protocol
-from flaxlight.rpc.farmer_rpc_api import FarmerRpcApi
-from flaxlight.rpc.farmer_rpc_client import FarmerRpcClient
-from flaxlight.rpc.harvester_rpc_api import HarvesterRpcApi
-from flaxlight.rpc.harvester_rpc_client import HarvesterRpcClient
-from flaxlight.rpc.rpc_server import start_rpc_server
-from flaxlight.types.blockchain_format.sized_bytes import bytes32
-from flaxlight.util.bech32m import decode_puzzle_hash, encode_puzzle_hash
+from cryptodogelight.consensus.coinbase import create_puzzlehash_for_pk
+from cryptodogelight.plotting.util import stream_plot_info_ph, stream_plot_info_pk, PlotRefreshResult, PlotRefreshEvents
+from cryptodogelight.plotting.manager import PlotManager
+from cryptodogelight.protocols import farmer_protocol
+from cryptodogelight.rpc.farmer_rpc_api import FarmerRpcApi
+from cryptodogelight.rpc.farmer_rpc_client import FarmerRpcClient
+from cryptodogelight.rpc.harvester_rpc_api import HarvesterRpcApi
+from cryptodogelight.rpc.harvester_rpc_client import HarvesterRpcClient
+from cryptodogelight.rpc.rpc_server import start_rpc_server
+from cryptodogelight.types.blockchain_format.sized_bytes import bytes32
+from cryptodogelight.util.bech32m import decode_puzzle_hash, encode_puzzle_hash
 from tests.block_tools import get_plot_dir
-from flaxlight.util.byte_types import hexstr_to_bytes
-from flaxlight.util.config import load_config, save_config
-from flaxlight.util.hash import std_hash
-from flaxlight.util.ints import uint8, uint16, uint32, uint64
-from flaxlight.wallet.derive_keys import master_sk_to_wallet_sk, master_sk_to_pooling_authentication_sk
+from cryptodogelight.util.byte_types import hexstr_to_bytes
+from cryptodogelight.util.config import load_config, save_config
+from cryptodogelight.util.hash import std_hash
+from cryptodogelight.util.ints import uint8, uint16, uint32, uint64
+from cryptodogelight.wallet.derive_keys import master_sk_to_wallet_sk, master_sk_to_pooling_authentication_sk
 from tests.setup_nodes import bt, self_hostname, setup_farmer_harvester, test_constants
 from tests.time_out_assert import time_out_assert, time_out_assert_custom_interval
 
@@ -460,7 +460,7 @@ class TestRpc:
                 master_sk_to_wallet_sk(bt.pool_master_sk, uint32(472)).get_g1()
             )
 
-            await client.set_reward_targets(encode_puzzle_hash(new_ph, "xfx"), encode_puzzle_hash(new_ph_2, "xfx"))
+            await client.set_reward_targets(encode_puzzle_hash(new_ph, "xcd"), encode_puzzle_hash(new_ph_2, "xcd"))
             targets_3 = await client.get_reward_targets(True)
             assert decode_puzzle_hash(targets_3["farmer_target"]) == new_ph
             assert decode_puzzle_hash(targets_3["pool_target"]) == new_ph_2
@@ -469,7 +469,7 @@ class TestRpc:
             new_ph_3: bytes32 = create_puzzlehash_for_pk(
                 master_sk_to_wallet_sk(bt.pool_master_sk, uint32(1888)).get_g1()
             )
-            await client.set_reward_targets(None, encode_puzzle_hash(new_ph_3, "xfx"))
+            await client.set_reward_targets(None, encode_puzzle_hash(new_ph_3, "xcd"))
             targets_4 = await client.get_reward_targets(True)
             assert decode_puzzle_hash(targets_4["farmer_target"]) == new_ph
             assert decode_puzzle_hash(targets_4["pool_target"]) == new_ph_3
@@ -477,10 +477,10 @@ class TestRpc:
 
             root_path = farmer_api.farmer._root_path
             config = load_config(root_path, "config.yaml")
-            assert config["farmer"]["xfx_target_address"] == encode_puzzle_hash(new_ph, "xfx")
-            assert config["pool"]["xfx_target_address"] == encode_puzzle_hash(new_ph_3, "xfx")
+            assert config["farmer"]["xcd_target_address"] == encode_puzzle_hash(new_ph, "xcd")
+            assert config["pool"]["xcd_target_address"] == encode_puzzle_hash(new_ph_3, "xcd")
 
-            new_ph_3_encoded = encode_puzzle_hash(new_ph_3, "xfx")
+            new_ph_3_encoded = encode_puzzle_hash(new_ph_3, "xcd")
             added_char = new_ph_3_encoded + "a"
             with pytest.raises(ValueError):
                 await client.set_reward_targets(None, added_char)

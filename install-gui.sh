@@ -4,17 +4,17 @@ export NODE_OPTIONS="--max-old-space-size=3000"
 
 
 if [ -z "$VIRTUAL_ENV" ]; then
-  echo "This requires the flaxlight python virtual environment."
+  echo "This requires the cryptodoge python virtual environment."
   echo "Execute '. ./activate' before running."
 	exit 1
 fi
 
 if [ "$(id -u)" = 0 ]; then
-  echo "The Flax Blockchain GUI can not be installed or run by the root user."
+  echo "The Cryptodoge Blockchain GUI can not be installed or run by the root user."
 	exit 1
 fi
 
-# Allows overriding the branch or commit to build in flax-blockchain-gui
+# Allows overriding the branch or commit to build in cryptodoge-gui
 SUBMODULE_BRANCH=$1
 
 UBUNTU=false
@@ -24,7 +24,7 @@ if [ "$(uname)" = "Linux" ]; then
 	if type apt-get; then
 		# Debian/Ubuntu
 		UBUNTU=true
-
+		
 		# Check if we are running a Raspberry PI 4
 		if [ "$(uname -m)" = "aarch64" ] \
 		&& [ "$(uname -n)" = "raspberrypi" ]; then
@@ -86,11 +86,12 @@ fi
 if [ ! "$CI" ]; then
 	echo "Running git submodule update --init --recursive."
 	echo ""
-	git submodule update --init --recursive
+	#chris evan return
+	#git submodule update --init --recursive
 	echo "Running git submodule update."
 	echo ""
-	git submodule update
-	cd flax-blockchain-gui
+	#git submodule update
+	cd cryptodoge-gui
 
 	if [ "$SUBMODULE_BRANCH" ];
 	then
@@ -103,8 +104,7 @@ if [ ! "$CI" ]; then
 	fi
 
 	npm install
-	# Audit fix doesn't currently play nice with lerna
-	#npm run audit:fix || true
+	npm audit fix || true
 	npm run build
 	python ../installhelper.py
 else
@@ -112,6 +112,6 @@ else
 fi
 
 echo ""
-echo "Flax blockchain install-gui.sh completed."
+echo "Cryptodoge blockchain install-gui.sh completed."
 echo ""
-echo "Type 'cd flax-blockchain-gui' and then 'npm run electron &' to start the GUI."
+echo "Type 'cd cryptodoge-gui' and then 'npm run electron &' to start the GUI."

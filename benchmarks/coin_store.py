@@ -3,18 +3,18 @@ import random
 import secrets
 from time import time
 from pathlib import Path
-from flaxlight.full_node.coin_store import CoinStore
+from cryptodogelight.full_node.coin_store import CoinStore
 from typing import List, Tuple
 import os
 import sys
 
 import aiosqlite
-from flaxlight.util.db_wrapper import DBWrapper
-from flaxlight.consensus.coinbase import create_farmer_coin, create_pool_coin
-from flaxlight.consensus.default_constants import DEFAULT_CONSTANTS
-from flaxlight.types.blockchain_format.sized_bytes import bytes32
-from flaxlight.types.blockchain_format.coin import Coin
-from flaxlight.util.ints import uint64, uint32
+from cryptodogelight.util.db_wrapper import DBWrapper
+from cryptodogelight.consensus.coinbase import create_farmer_coin, create_pool_coin
+from cryptodogelight.consensus.default_constants import DEFAULT_CONSTANTS
+from cryptodogelight.types.blockchain_format.sized_bytes import bytes32
+from cryptodogelight.types.blockchain_format.coin import Coin
+from cryptodogelight.util.ints import uint64, uint32
 
 
 NUM_ITERS = 200

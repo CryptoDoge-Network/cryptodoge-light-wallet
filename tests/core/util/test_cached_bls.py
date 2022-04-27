@@ -1,7 +1,7 @@
 import unittest
 from blspy import AugSchemeMPL, G1Element
-from flaxlight.util import cached_bls
-from flaxlight.util.lru_cache import LRUCache
+from cryptodogelight.util import cached_bls
+from cryptodogelight.util.lru_cache import LRUCache
 
 
 class TestCachedBLS(unittest.TestCase):

@@ -2,9 +2,9 @@ import asyncio
 
 import pytest
 
-from flaxlight.protocols.protocol_message_types import ProtocolMessageTypes
-from flaxlight.server.outbound_message import make_msg
-from flaxlight.server.rate_limits import RateLimiter, NON_TX_FREQ
+from cryptodogelight.protocols.protocol_message_types import ProtocolMessageTypes
+from cryptodogelight.server.outbound_message import make_msg
+from cryptodogelight.server.rate_limits import RateLimiter, NON_TX_FREQ
 from tests.setup_nodes import test_constants
 
 

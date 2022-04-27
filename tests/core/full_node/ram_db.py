@@ -2,12 +2,12 @@ from typing import Tuple
 
 import aiosqlite
 
-from flaxlight.consensus.blockchain import Blockchain
-from flaxlight.consensus.constants import ConsensusConstants
-from flaxlight.full_node.block_store import BlockStore
-from flaxlight.full_node.coin_store import CoinStore
-from flaxlight.full_node.hint_store import HintStore
-from flaxlight.util.db_wrapper import DBWrapper
+from cryptodogelight.consensus.blockchain import Blockchain
+from cryptodogelight.consensus.constants import ConsensusConstants
+from cryptodogelight.full_node.block_store import BlockStore
+from cryptodogelight.full_node.coin_store import CoinStore
+from cryptodogelight.full_node.hint_store import HintStore
+from cryptodogelight.util.db_wrapper import DBWrapper
 
 
 async def create_ram_blockchain(consensus_constants: ConsensusConstants) -> Tuple[aiosqlite.Connection, Blockchain]:

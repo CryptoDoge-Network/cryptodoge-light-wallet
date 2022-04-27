@@ -4,17 +4,17 @@ from typing import List, Tuple, Optional
 
 from blspy import AugSchemeMPL, G1Element, G2Element, PrivateKey
 
-from flaxlight.types.blockchain_format.program import Program
-from flaxlight.types.blockchain_format.sized_bytes import bytes32
-from flaxlight.types.blockchain_format.coin import Coin
-from flaxlight.types.coin_spend import CoinSpend
-from flaxlight.types.spend_bundle import SpendBundle
-from flaxlight.util.errors import Err
-from flaxlight.util.condition_tools import ConditionOpcode
-from flaxlight.util.ints import uint64
-from flaxlight.consensus.default_constants import DEFAULT_CONSTANTS
-from flaxlight.wallet.lineage_proof import LineageProof
-from flaxlight.wallet.puzzles import (
+from cryptodogelight.types.blockchain_format.program import Program
+from cryptodogelight.types.blockchain_format.sized_bytes import bytes32
+from cryptodogelight.types.blockchain_format.coin import Coin
+from cryptodogelight.types.coin_spend import CoinSpend
+from cryptodogelight.types.spend_bundle import SpendBundle
+from cryptodogelight.util.errors import Err
+from cryptodogelight.util.condition_tools import ConditionOpcode
+from cryptodogelight.util.ints import uint64
+from cryptodogelight.consensus.default_constants import DEFAULT_CONSTANTS
+from cryptodogelight.wallet.lineage_proof import LineageProof
+from cryptodogelight.wallet.puzzles import (
     p2_conditions,
     p2_delegated_puzzle_or_hidden_puzzle,
     singleton_top_layer,
@@ -25,14 +25,14 @@ from tests.clvm.test_puzzles import (
     secret_exponent_for_index,
 )
 
-from flaxlight.clvm.spend_sim import SpendSim, SimClient
+from cryptodogelight.clvm.spend_sim import SpendSim, SimClient
 
 """
 This test suite aims to test:
-    - flaxlight.wallet.puzzles.singleton_top_layer.py
-    - flaxlight.wallet.puzzles.singleton_top_layer.clvm
-    - flaxlight.wallet.puzzles.p2_singleton.clvm
-    - flaxlight.wallet.puzzles.p2_singleton_or_delayed_puzhash.clvm
+    - cryptodogelight.wallet.puzzles.singleton_top_layer.py
+    - cryptodogelight.wallet.puzzles.singleton_top_layer.clvm
+    - cryptodogelight.wallet.puzzles.p2_singleton.clvm
+    - cryptodogelight.wallet.puzzles.p2_singleton_or_delayed_puzhash.clvm
 """
 
 

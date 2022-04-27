@@ -1,7 +1,7 @@
-from flaxlight.types.blockchain_format.coin import Coin
-from flaxlight.types.blockchain_format.sized_bytes import bytes32
-from flaxlight.util.ints import uint64
-from flaxlight.util.hash import std_hash
+from cryptodogelight.types.blockchain_format.coin import Coin
+from cryptodogelight.types.blockchain_format.sized_bytes import bytes32
+from cryptodogelight.util.ints import uint64
+from cryptodogelight.util.hash import std_hash
 import io
 
 

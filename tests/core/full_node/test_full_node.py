@@ -9,37 +9,37 @@ from typing import Dict, Optional, List
 
 import pytest
 
-from flaxlight.consensus.pot_iterations import is_overflow_block
-from flaxlight.full_node.bundle_tools import detect_potential_template_generator
-from flaxlight.full_node.full_node_api import FullNodeAPI
-from flaxlight.full_node.signage_point import SignagePoint
-from flaxlight.protocols import full_node_protocol as fnp, full_node_protocol, wallet_protocol
-from flaxlight.protocols import timelord_protocol
-from flaxlight.protocols.full_node_protocol import RespondTransaction
-from flaxlight.protocols.protocol_message_types import ProtocolMessageTypes
-from flaxlight.server.address_manager import AddressManager
-from flaxlight.server.outbound_message import Message
-from flaxlight.simulator.simulator_protocol import FarmNewBlockProtocol
-from flaxlight.types.blockchain_format.classgroup import ClassgroupElement
-from flaxlight.types.blockchain_format.program import SerializedProgram
-from flaxlight.types.blockchain_format.vdf import CompressibleVDFField, VDFProof
-from flaxlight.types.condition_opcodes import ConditionOpcode
-from flaxlight.types.condition_with_args import ConditionWithArgs
-from flaxlight.types.full_block import FullBlock
-from flaxlight.types.mempool_inclusion_status import MempoolInclusionStatus
-from flaxlight.types.peer_info import PeerInfo, TimestampedPeerInfo
-from flaxlight.types.spend_bundle import SpendBundle
-from flaxlight.types.unfinished_block import UnfinishedBlock
+from cryptodogelight.consensus.pot_iterations import is_overflow_block
+from cryptodogelight.full_node.bundle_tools import detect_potential_template_generator
+from cryptodogelight.full_node.full_node_api import FullNodeAPI
+from cryptodogelight.full_node.signage_point import SignagePoint
+from cryptodogelight.protocols import full_node_protocol as fnp, full_node_protocol, wallet_protocol
+from cryptodogelight.protocols import timelord_protocol
+from cryptodogelight.protocols.full_node_protocol import RespondTransaction
+from cryptodogelight.protocols.protocol_message_types import ProtocolMessageTypes
+from cryptodogelight.server.address_manager import AddressManager
+from cryptodogelight.server.outbound_message import Message
+from cryptodogelight.simulator.simulator_protocol import FarmNewBlockProtocol
+from cryptodogelight.types.blockchain_format.classgroup import ClassgroupElement
+from cryptodogelight.types.blockchain_format.program import SerializedProgram
+from cryptodogelight.types.blockchain_format.vdf import CompressibleVDFField, VDFProof
+from cryptodogelight.types.condition_opcodes import ConditionOpcode
+from cryptodogelight.types.condition_with_args import ConditionWithArgs
+from cryptodogelight.types.full_block import FullBlock
+from cryptodogelight.types.mempool_inclusion_status import MempoolInclusionStatus
+from cryptodogelight.types.peer_info import PeerInfo, TimestampedPeerInfo
+from cryptodogelight.types.spend_bundle import SpendBundle
+from cryptodogelight.types.unfinished_block import UnfinishedBlock
 from tests.block_tools import get_signage_point
-from flaxlight.util.clvm import int_to_bytes
-from flaxlight.util.errors import Err
-from flaxlight.util.hash import std_hash
-from flaxlight.util.ints import uint8, uint16, uint32, uint64
-from flaxlight.util.recursive_replace import recursive_replace
-from flaxlight.util.vdf_prover import get_vdf_info_and_proof
+from cryptodogelight.util.clvm import int_to_bytes
+from cryptodogelight.util.errors import Err
+from cryptodogelight.util.hash import std_hash
+from cryptodogelight.util.ints import uint8, uint16, uint32, uint64
+from cryptodogelight.util.recursive_replace import recursive_replace
+from cryptodogelight.util.vdf_prover import get_vdf_info_and_proof
 from tests.wallet_tools import WalletTool
-from flaxlight.wallet.cc_wallet.cc_wallet import CCWallet
-from flaxlight.wallet.transaction_record import TransactionRecord
+from cryptodogelight.wallet.cc_wallet.cc_wallet import CCWallet
+from cryptodogelight.wallet.transaction_record import TransactionRecord
 
 from tests.connection_utils import add_dummy_connection, connect_and_get_peer
 from tests.core.full_node.test_coin_store import get_future_reward_coins

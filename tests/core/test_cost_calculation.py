@@ -6,13 +6,13 @@ import time
 import pytest
 from clvm_tools import binutils
 
-from flaxlight.consensus.condition_costs import ConditionCost
-from flaxlight.consensus.cost_calculator import NPCResult, calculate_cost_of_program
-from flaxlight.full_node.bundle_tools import simple_solution_generator
-from flaxlight.full_node.mempool_check_conditions import get_name_puzzle_conditions, get_puzzle_and_solution_for_coin
-from flaxlight.types.blockchain_format.program import Program, SerializedProgram
-from flaxlight.types.generator_types import BlockGenerator
-from flaxlight.wallet.puzzles import p2_delegated_puzzle_or_hidden_puzzle
+from cryptodogelight.consensus.condition_costs import ConditionCost
+from cryptodogelight.consensus.cost_calculator import NPCResult, calculate_cost_of_program
+from cryptodogelight.full_node.bundle_tools import simple_solution_generator
+from cryptodogelight.full_node.mempool_check_conditions import get_name_puzzle_conditions, get_puzzle_and_solution_for_coin
+from cryptodogelight.types.blockchain_format.program import Program, SerializedProgram
+from cryptodogelight.types.generator_types import BlockGenerator
+from cryptodogelight.wallet.puzzles import p2_delegated_puzzle_or_hidden_puzzle
 from tests.setup_nodes import bt, test_constants
 
 from .make_block_generator import make_block_generator
@@ -46,7 +46,7 @@ def large_block_generator(size):
     except FileNotFoundError:
         generator = make_block_generator(size)
         blob = bytes(generator.program)
-        #  TODO: Re-enable large-block*.hex but cache in ~/.flaxlight/subdir
+        #  TODO: Re-enable large-block*.hex but cache in ~/.cryptodogelight/subdir
         #  with open(hex_path, "w") as f:
         #      f.write(blob.hex())
         return blob

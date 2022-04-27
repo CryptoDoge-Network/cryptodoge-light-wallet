@@ -7,14 +7,14 @@ import aiosqlite
 import pytest
 from clvm_tools import binutils
 
-from flaxlight.types.blockchain_format.coin import Coin
-from flaxlight.types.blockchain_format.program import Program, SerializedProgram
-from flaxlight.types.blockchain_format.sized_bytes import bytes32
-from flaxlight.types.coin_spend import CoinSpend
-from flaxlight.util.db_wrapper import DBWrapper
-from flaxlight.util.ints import uint64
+from cryptodogelight.types.blockchain_format.coin import Coin
+from cryptodogelight.types.blockchain_format.program import Program, SerializedProgram
+from cryptodogelight.types.blockchain_format.sized_bytes import bytes32
+from cryptodogelight.types.coin_spend import CoinSpend
+from cryptodogelight.util.db_wrapper import DBWrapper
+from cryptodogelight.util.ints import uint64
 
-from flaxlight.wallet.wallet_pool_store import WalletPoolStore
+from cryptodogelight.wallet.wallet_pool_store import WalletPoolStore
 
 
 @pytest.fixture(scope="module")

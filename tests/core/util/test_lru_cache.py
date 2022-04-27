@@ -1,6 +1,6 @@
 import unittest
 
-from flaxlight.util.lru_cache import LRUCache
+from cryptodogelight.util.lru_cache import LRUCache
 
 
 class TestLRUCache(unittest.TestCase):

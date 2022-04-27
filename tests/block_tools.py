@@ -16,75 +16,75 @@ from typing import Callable, Dict, List, Optional, Tuple, Any
 from blspy import AugSchemeMPL, G1Element, G2Element, PrivateKey
 from chiabip158 import PyBIP158
 
-from flaxlight.cmds.init_funcs import create_all_ssl, create_default_flaxlight_config
-from flaxlight.daemon.keychain_proxy import connect_to_keychain_and_validate, wrap_local_keychain
-from flaxlight.full_node.bundle_tools import (
+from cryptodogelight.cmds.init_funcs import create_all_ssl, create_default_cryptodogelight_config
+from cryptodogelight.daemon.keychain_proxy import connect_to_keychain_and_validate, wrap_local_keychain
+from cryptodogelight.full_node.bundle_tools import (
     best_solution_generator_from_template,
     detect_potential_template_generator,
     simple_solution_generator,
 )
-from flaxlight.util.errors import Err
-from flaxlight.full_node.generator import setup_generator_args
-from flaxlight.full_node.mempool_check_conditions import GENERATOR_MOD
-from flaxlight.plotting.create_plots import create_plots, PlotKeys
-from flaxlight.consensus.block_creation import unfinished_block_to_full_block
-from flaxlight.consensus.block_record import BlockRecord
-from flaxlight.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
-from flaxlight.consensus.blockchain_interface import BlockchainInterface
-from flaxlight.consensus.coinbase import create_puzzlehash_for_pk, create_farmer_coin, create_pool_coin
-from flaxlight.consensus.condition_costs import ConditionCost
-from flaxlight.consensus.constants import ConsensusConstants
-from flaxlight.consensus.default_constants import DEFAULT_CONSTANTS
-from flaxlight.consensus.deficit import calculate_deficit
-from flaxlight.consensus.full_block_to_block_record import block_to_block_record
-from flaxlight.consensus.make_sub_epoch_summary import next_sub_epoch_summary
-from flaxlight.consensus.pot_iterations import (
+from cryptodogelight.util.errors import Err
+from cryptodogelight.full_node.generator import setup_generator_args
+from cryptodogelight.full_node.mempool_check_conditions import GENERATOR_MOD
+from cryptodogelight.plotting.create_plots import create_plots, PlotKeys
+from cryptodogelight.consensus.block_creation import unfinished_block_to_full_block
+from cryptodogelight.consensus.block_record import BlockRecord
+from cryptodogelight.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
+from cryptodogelight.consensus.blockchain_interface import BlockchainInterface
+from cryptodogelight.consensus.coinbase import create_puzzlehash_for_pk, create_farmer_coin, create_pool_coin
+from cryptodogelight.consensus.condition_costs import ConditionCost
+from cryptodogelight.consensus.constants import ConsensusConstants
+from cryptodogelight.consensus.default_constants import DEFAULT_CONSTANTS
+from cryptodogelight.consensus.deficit import calculate_deficit
+from cryptodogelight.consensus.full_block_to_block_record import block_to_block_record
+from cryptodogelight.consensus.make_sub_epoch_summary import next_sub_epoch_summary
+from cryptodogelight.consensus.pot_iterations import (
     calculate_ip_iters,
     calculate_iterations_quality,
     calculate_sp_interval_iters,
     calculate_sp_iters,
     is_overflow_block,
 )
-from flaxlight.consensus.vdf_info_computation import get_signage_point_vdf_info
-from flaxlight.full_node.signage_point import SignagePoint
-from flaxlight.plotting.util import PlotsRefreshParameter, PlotRefreshResult, PlotRefreshEvents, parse_plot_info
-from flaxlight.plotting.manager import PlotManager
-from flaxlight.server.server import ssl_context_for_server
-from flaxlight.types.blockchain_format.classgroup import ClassgroupElement
-from flaxlight.types.blockchain_format.coin import Coin, hash_coin_list
-from flaxlight.types.blockchain_format.foliage import Foliage, FoliageBlockData, FoliageTransactionBlock, TransactionsInfo
-from flaxlight.types.blockchain_format.pool_target import PoolTarget
-from flaxlight.types.blockchain_format.program import INFINITE_COST
-from flaxlight.types.blockchain_format.proof_of_space import ProofOfSpace
-from flaxlight.types.blockchain_format.reward_chain_block import RewardChainBlockUnfinished
-from flaxlight.types.blockchain_format.sized_bytes import bytes32
-from flaxlight.types.blockchain_format.slots import (
+from cryptodogelight.consensus.vdf_info_computation import get_signage_point_vdf_info
+from cryptodogelight.full_node.signage_point import SignagePoint
+from cryptodogelight.plotting.util import PlotsRefreshParameter, PlotRefreshResult, PlotRefreshEvents, parse_plot_info
+from cryptodogelight.plotting.manager import PlotManager
+from cryptodogelight.server.server import ssl_context_for_server
+from cryptodogelight.types.blockchain_format.classgroup import ClassgroupElement
+from cryptodogelight.types.blockchain_format.coin import Coin, hash_coin_list
+from cryptodogelight.types.blockchain_format.foliage import Foliage, FoliageBlockData, FoliageTransactionBlock, TransactionsInfo
+from cryptodogelight.types.blockchain_format.pool_target import PoolTarget
+from cryptodogelight.types.blockchain_format.program import INFINITE_COST
+from cryptodogelight.types.blockchain_format.proof_of_space import ProofOfSpace
+from cryptodogelight.types.blockchain_format.reward_chain_block import RewardChainBlockUnfinished
+from cryptodogelight.types.blockchain_format.sized_bytes import bytes32
+from cryptodogelight.types.blockchain_format.slots import (
     ChallengeChainSubSlot,
     InfusedChallengeChainSubSlot,
     RewardChainSubSlot,
     SubSlotProofs,
 )
-from flaxlight.types.blockchain_format.sub_epoch_summary import SubEpochSummary
-from flaxlight.types.blockchain_format.vdf import VDFInfo, VDFProof
-from flaxlight.types.end_of_slot_bundle import EndOfSubSlotBundle
-from flaxlight.types.full_block import FullBlock
-from flaxlight.types.generator_types import BlockGenerator, CompressorArg
-from flaxlight.types.spend_bundle import SpendBundle
-from flaxlight.types.unfinished_block import UnfinishedBlock
-from flaxlight.util.bech32m import encode_puzzle_hash
-from flaxlight.util.block_cache import BlockCache
-from flaxlight.util.condition_tools import ConditionOpcode
-from flaxlight.util.config import load_config, save_config
-from flaxlight.util.hash import std_hash
-from flaxlight.util.ints import uint8, uint16, uint32, uint64, uint128
-from flaxlight.util.keychain import Keychain, bytes_to_mnemonic
-from flaxlight.util.merkle_set import MerkleSet
-from flaxlight.util.prev_transaction_block import get_prev_transaction_block
-from flaxlight.util.path import mkdir
-from flaxlight.util.vdf_prover import get_vdf_info_and_proof
+from cryptodogelight.types.blockchain_format.sub_epoch_summary import SubEpochSummary
+from cryptodogelight.types.blockchain_format.vdf import VDFInfo, VDFProof
+from cryptodogelight.types.end_of_slot_bundle import EndOfSubSlotBundle
+from cryptodogelight.types.full_block import FullBlock
+from cryptodogelight.types.generator_types import BlockGenerator, CompressorArg
+from cryptodogelight.types.spend_bundle import SpendBundle
+from cryptodogelight.types.unfinished_block import UnfinishedBlock
+from cryptodogelight.util.bech32m import encode_puzzle_hash
+from cryptodogelight.util.block_cache import BlockCache
+from cryptodogelight.util.condition_tools import ConditionOpcode
+from cryptodogelight.util.config import load_config, save_config
+from cryptodogelight.util.hash import std_hash
+from cryptodogelight.util.ints import uint8, uint16, uint32, uint64, uint128
+from cryptodogelight.util.keychain import Keychain, bytes_to_mnemonic
+from cryptodogelight.util.merkle_set import MerkleSet
+from cryptodogelight.util.prev_transaction_block import get_prev_transaction_block
+from cryptodogelight.util.path import mkdir
+from cryptodogelight.util.vdf_prover import get_vdf_info_and_proof
 from tests.time_out_assert import time_out_assert
 from tests.wallet_tools import WalletTool
-from flaxlight.wallet.derive_keys import (
+from cryptodogelight.wallet.derive_keys import (
     master_sk_to_farmer_sk,
     master_sk_to_local_sk,
     master_sk_to_pool_sk,
@@ -141,7 +141,7 @@ class BlockTools:
         self.root_path = root_path
         self.local_keychain = keychain
 
-        create_default_flaxlight_config(root_path)
+        create_default_cryptodogelight_config(root_path)
         create_all_ssl(root_path)
 
         self.local_sk_cache: Dict[bytes32, Tuple[PrivateKey, Any]] = {}
@@ -195,7 +195,7 @@ class BlockTools:
             self.keychain_proxy = wrap_local_keychain(self.local_keychain, log=log)
         else:
             self.keychain_proxy = await connect_to_keychain_and_validate(
-                self.root_path, log, user="testing-1.8.0", service="flaxlight-testing-1.8.0"
+                self.root_path, log, user="testing-1.8.0", service="cryptodogelight-testing-1.8.0"
             )
 
         await self.keychain_proxy.delete_all_keys()
@@ -220,7 +220,7 @@ class BlockTools:
 
         self.farmer_pubkeys: List[G1Element] = [master_sk_to_farmer_sk(sk).get_g1() for sk in self.all_sks]
         if len(self.pool_pubkeys) == 0 or len(self.farmer_pubkeys) == 0:
-            raise RuntimeError("Keys not generated. Run `flaxlight generate keys`")
+            raise RuntimeError("Keys not generated. Run `cryptodogelight generate keys`")
 
         self.plot_manager.set_public_keys(self.farmer_pubkeys, self.pool_pubkeys)
 
@@ -271,7 +271,7 @@ class BlockTools:
             if pool_contract_puzzle_hash is None:
                 pool_pk = self.pool_pk
             else:
-                pool_address = encode_puzzle_hash(pool_contract_puzzle_hash, "xfx")
+                pool_address = encode_puzzle_hash(pool_contract_puzzle_hash, "xcd")
 
             keys = PlotKeys(self.farmer_pk, pool_pk, pool_address)
             # No datetime in the filename, to get deterministic filenames and not re-plot
@@ -1312,7 +1312,7 @@ def get_challenges(
 
 
 def get_plot_dir() -> Path:
-    cache_path = Path(os.path.expanduser(os.getenv("FLAX_ROOT", "~/.flaxlight/"))) / "test-plots"
+    cache_path = Path(os.path.expanduser(os.getenv("CRYPTODOGE_ROOT", "~/.cryptodogelight/"))) / "test-plots"
     mkdir(cache_path)
     return cache_path
 

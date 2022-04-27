@@ -4,11 +4,11 @@ from secrets import token_bytes
 import aiosqlite
 import pytest
 
-from flaxlight.types.blockchain_format.coin import Coin
-from flaxlight.util.db_wrapper import DBWrapper
-from flaxlight.util.ints import uint64
+from cryptodogelight.types.blockchain_format.coin import Coin
+from cryptodogelight.util.db_wrapper import DBWrapper
+from cryptodogelight.util.ints import uint64
 
-from flaxlight.wallet.wallet_interested_store import WalletInterestedStore
+from cryptodogelight.wallet.wallet_interested_store import WalletInterestedStore
 
 
 @pytest.fixture(scope="module")

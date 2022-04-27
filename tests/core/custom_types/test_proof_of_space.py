@@ -1,7 +1,7 @@
 from secrets import token_bytes
 
-from flaxlight.consensus.default_constants import DEFAULT_CONSTANTS
-from flaxlight.types.blockchain_format.proof_of_space import ProofOfSpace  # pylint: disable=E0401
+from cryptodogelight.consensus.default_constants import DEFAULT_CONSTANTS
+from cryptodogelight.types.blockchain_format.proof_of_space import ProofOfSpace  # pylint: disable=E0401
 
 
 class TestProofOfSpace:

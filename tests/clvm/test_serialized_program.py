@@ -1,7 +1,7 @@
 from unittest import TestCase
 
-from flaxlight.types.blockchain_format.program import Program, SerializedProgram, INFINITE_COST
-from flaxlight.wallet.puzzles.load_clvm import load_clvm
+from cryptodogelight.types.blockchain_format.program import Program, SerializedProgram, INFINITE_COST
+from cryptodogelight.wallet.puzzles.load_clvm import load_clvm
 
 SHA256TREE_MOD = load_clvm("sha256tree_module.clvm")
 

@@ -4,12 +4,12 @@ import asyncio
 import pytest
 from colorlog import logging
 
-from flaxlight.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
-from flaxlight.protocols import full_node_protocol
-from flaxlight.simulator.simulator_protocol import FarmNewBlockProtocol
-from flaxlight.types.peer_info import PeerInfo
-from flaxlight.util.ints import uint16, uint32
-from flaxlight.wallet.wallet_state_manager import WalletStateManager
+from cryptodogelight.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
+from cryptodogelight.protocols import full_node_protocol
+from cryptodogelight.simulator.simulator_protocol import FarmNewBlockProtocol
+from cryptodogelight.types.peer_info import PeerInfo
+from cryptodogelight.util.ints import uint16, uint32
+from cryptodogelight.wallet.wallet_state_manager import WalletStateManager
 from tests.connection_utils import disconnect_all_and_reconnect
 from tests.setup_nodes import bt, self_hostname, setup_node_and_wallet, setup_simulators_and_wallets, test_constants
 from tests.time_out_assert import time_out_assert

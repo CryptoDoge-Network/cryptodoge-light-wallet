@@ -2,14 +2,14 @@ import asyncio
 import logging
 import pytest
 from blspy import PrivateKey
-from flaxlight.pools.pool_wallet import PoolWallet
-from flaxlight.pools.pool_wallet_info import PoolState, FARMING_TO_POOL
-from flaxlight.simulator.simulator_protocol import FarmNewBlockProtocol
-from flaxlight.types.coin_spend import CoinSpend
-from flaxlight.types.peer_info import PeerInfo
-from flaxlight.util.ints import uint16, uint32
-from flaxlight.wallet.derive_keys import master_sk_to_singleton_owner_sk
-from flaxlight.wallet.wallet_state_manager import WalletStateManager
+from cryptodogelight.pools.pool_wallet import PoolWallet
+from cryptodogelight.pools.pool_wallet_info import PoolState, FARMING_TO_POOL
+from cryptodogelight.simulator.simulator_protocol import FarmNewBlockProtocol
+from cryptodogelight.types.coin_spend import CoinSpend
+from cryptodogelight.types.peer_info import PeerInfo
+from cryptodogelight.util.ints import uint16, uint32
+from cryptodogelight.wallet.derive_keys import master_sk_to_singleton_owner_sk
+from cryptodogelight.wallet.wallet_state_manager import WalletStateManager
 from tests.setup_nodes import self_hostname, setup_simulators_and_wallets
 
 

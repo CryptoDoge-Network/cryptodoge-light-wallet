@@ -7,19 +7,19 @@ from typing import List, Optional
 
 import pytest
 
-from flaxlight.consensus.blockchain import ReceiveBlockResult
-from flaxlight.consensus.multiprocess_validation import PreValidationResult
-from flaxlight.consensus.pot_iterations import is_overflow_block
-from flaxlight.full_node.full_node_store import FullNodeStore
-from flaxlight.full_node.signage_point import SignagePoint
-from flaxlight.protocols import timelord_protocol
-from flaxlight.protocols.timelord_protocol import NewInfusionPointVDF
-from flaxlight.types.blockchain_format.sized_bytes import bytes32
-from flaxlight.types.unfinished_block import UnfinishedBlock
-from flaxlight.util.block_cache import BlockCache
+from cryptodogelight.consensus.blockchain import ReceiveBlockResult
+from cryptodogelight.consensus.multiprocess_validation import PreValidationResult
+from cryptodogelight.consensus.pot_iterations import is_overflow_block
+from cryptodogelight.full_node.full_node_store import FullNodeStore
+from cryptodogelight.full_node.signage_point import SignagePoint
+from cryptodogelight.protocols import timelord_protocol
+from cryptodogelight.protocols.timelord_protocol import NewInfusionPointVDF
+from cryptodogelight.types.blockchain_format.sized_bytes import bytes32
+from cryptodogelight.types.unfinished_block import UnfinishedBlock
+from cryptodogelight.util.block_cache import BlockCache
 from tests.block_tools import get_signage_point, create_block_tools
-from flaxlight.util.hash import std_hash
-from flaxlight.util.ints import uint8, uint32, uint64, uint128
+from cryptodogelight.util.hash import std_hash
+from cryptodogelight.util.ints import uint8, uint32, uint64, uint128
 from tests.setup_nodes import test_constants as test_constants_original
 from tests.util.blockchain import create_blockchain
 from tests.util.keyring import TempKeyring

@@ -3,12 +3,12 @@ import logging
 import pytest
 from clvm.casts import int_to_bytes
 
-from flaxlight.consensus.blockchain import Blockchain
-from flaxlight.full_node.hint_store import HintStore
-from flaxlight.types.blockchain_format.coin import Coin
-from flaxlight.types.condition_opcodes import ConditionOpcode
-from flaxlight.types.condition_with_args import ConditionWithArgs
-from flaxlight.types.spend_bundle import SpendBundle
+from cryptodogelight.consensus.blockchain import Blockchain
+from cryptodogelight.full_node.hint_store import HintStore
+from cryptodogelight.types.blockchain_format.coin import Coin
+from cryptodogelight.types.condition_opcodes import ConditionOpcode
+from cryptodogelight.types.condition_with_args import ConditionWithArgs
+from cryptodogelight.types.spend_bundle import SpendBundle
 from tests.util.db_connection import DBConnection
 from tests.wallet_tools import WalletTool
 from tests.setup_nodes import bt

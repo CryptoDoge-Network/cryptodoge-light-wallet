@@ -6,9 +6,9 @@ from pathlib import Path
 import aiosqlite
 import pytest
 
-from flaxlight.server.address_manager import AddressManager, ExtendedPeerInfo
-from flaxlight.server.address_manager_store import AddressManagerStore
-from flaxlight.types.peer_info import PeerInfo, TimestampedPeerInfo
+from cryptodogelight.server.address_manager import AddressManager, ExtendedPeerInfo
+from cryptodogelight.server.address_manager_store import AddressManagerStore
+from cryptodogelight.types.peer_info import PeerInfo, TimestampedPeerInfo
 
 
 @pytest.fixture(scope="module")

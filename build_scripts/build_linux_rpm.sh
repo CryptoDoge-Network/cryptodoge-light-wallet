@@ -6,23 +6,23 @@ if [ ! "$1" ]; then
 elif [ "$1" = "amd64" ]; then
 	#PLATFORM="$1"
 	REDHAT_PLATFORM="x86_64"
-	DIR_NAME="flaxlight-blockchain-linux-x64"
+	DIR_NAME="cryptodogelight-linux-x64"
 else
 	#PLATFORM="$1"
-	DIR_NAME="flaxlight-blockchain-linux-arm64"
+	DIR_NAME="cryptodogelight-linux-arm64"
 fi
 
 pip install setuptools_scm
-# The environment variable FLAX_INSTALLER_VERSION needs to be defined
+# The environment variable CRYPTODOGE_INSTALLER_VERSION needs to be defined
 # If the env variable NOTARIZE and the username and password variables are
 # set, this will attempt to Notarize the signed DMG
-FLAX_INSTALLER_VERSION=$(python installer-version.py)
+CRYPTODOGE_INSTALLER_VERSION=$(python installer-version.py)
 
-if [ ! "$FLAX_INSTALLER_VERSION" ]; then
-	echo "WARNING: No environment variable FLAX_INSTALLER_VERSION set. Using 0.0.0."
-	FLAX_INSTALLER_VERSION="0.0.0"
+if [ ! "$CRYPTODOGE_INSTALLER_VERSION" ]; then
+	echo "WARNING: No environment variable CRYPTODOGE_INSTALLER_VERSION set. Using 0.0.0."
+	CRYPTODOGE_INSTALLER_VERSION="0.0.0"
 fi
-echo "Flax Installer Version is: $FLAX_INSTALLER_VERSION"
+echo "Cryptodoge Installer Version is: $CRYPTODOGE_INSTALLER_VERSION"
 
 echo "Installing npm and electron packagers"
 npm install electron-packager -g
@@ -35,7 +35,7 @@ mkdir dist
 
 echo "Create executables with pyinstaller"
 pip install pyinstaller==4.5
-SPEC_FILE=$(python -c 'import flaxlight; print(flaxlight.PYINSTALLER_SPEC_PATH)')
+SPEC_FILE=$(python -c 'import cryptodogelight; print(cryptodogelight.PYINSTALLER_SPEC_PATH)')
 pyinstaller --log-level=INFO "$SPEC_FILE"
 LAST_EXIT_CODE=$?
 if [ "$LAST_EXIT_CODE" -ne 0 ]; then
@@ -43,9 +43,9 @@ if [ "$LAST_EXIT_CODE" -ne 0 ]; then
 	exit $LAST_EXIT_CODE
 fi
 
-cp -r dist/daemon ../flax-blockchain-gui/packages/wallet
+cp -r dist/daemon ../cryptodoge-gui/packages/wallet
 cd .. || exit
-cd flax-blockchain-gui || exit
+cd cryptodoge-gui || exit
 
 echo "npm build"
 npm install
@@ -57,14 +57,14 @@ if [ "$LAST_EXIT_CODE" -ne 0 ]; then
 	exit $LAST_EXIT_CODE
 fi
 
-# sets the version for flaxlight-blockchain in package.json
+# sets the version for cryptodogelight in package.json
 cd ./packages/wallet || exit
 cp package.json package.json.orig
-jq --arg VER "$FLAX_INSTALLER_VERSION" '.version=$VER' package.json > temp.json && mv temp.json package.json
+jq --arg VER "$CRYPTODOGE_INSTALLER_VERSION" '.version=$VER' package.json > temp.json && mv temp.json package.json
 
-electron-packager . flaxlight-blockchain --asar.unpack="**/daemon/**" --platform=linux \
---icon=src/assets/img/Flax.icns --overwrite --app-bundle-id=org.flaxnetwork.lightwallet \
---appVersion=$FLAX_INSTALLER_VERSION --executable-name=flaxlight-blockchain
+electron-packager . cryptodogelight --asar.unpack="**/daemon/**" --platform=linux \
+--icon=src/assets/img/Cryptodoge.icns --overwrite --app-bundle-id=org.cryptodogenetwork.lightwallet \
+--appVersion=$CRYPTODOGE_INSTALLER_VERSION --executable-name=cryptodogelight
 LAST_EXIT_CODE=$?
 
 # reset the package.json to the original
@@ -79,12 +79,12 @@ mv $DIR_NAME ../../../build_scripts/dist/
 cd ../../../build_scripts || exit
 
 if [ "$REDHAT_PLATFORM" = "x86_64" ]; then
-	echo "Create flaxlight-blockchain-$FLAX_INSTALLER_VERSION.rpm"
+	echo "Create cryptodogelight-$CRYPTODOGE_INSTALLER_VERSION.rpm"
 
 	# shellcheck disable=SC2046
 	NODE_ROOT="$(dirname $(dirname $(which node)))"
 
-	# Disables build links from the generated rpm so that we dont conflict with other packages. See https://github.com/Flax-Network/flax-blockchain/issues/3846
+	# Disables build links from the generated rpm so that we dont conflict with other packages. See https://github.com/CryptoDoge-Network/cryptodoge/issues/3846
 	# shellcheck disable=SC2086
 	sed -i '1s/^/%define _build_id_links none\n%global _enable_debug_package 0\n%global debug_package %{nil}\n%global __os_install_post \/usr\/lib\/rpm\/brp-compress %{nil}\n/' "$NODE_ROOT/lib/node_modules/electron-installer-redhat/resources/spec.ejs"
 
@@ -94,8 +94,8 @@ if [ "$REDHAT_PLATFORM" = "x86_64" ]; then
 	sed -i "s#throw new Error('Please upgrade to RPM 4.13.*#console.warn('You are using RPM < 4.13')\n      return { requires: [ 'gtk3', 'libnotify', 'nss', 'libXScrnSaver', 'libXtst', 'xdg-utils', 'at-spi2-core', 'libdrm', 'mesa-libgbm', 'libxcb' ] }#g" $NODE_ROOT/lib/node_modules/electron-installer-redhat/src/dependencies.js
 
   electron-installer-redhat --src dist/$DIR_NAME/ --dest final_installer/ \
-  --arch "$REDHAT_PLATFORM" --options.version $FLAX_INSTALLER_VERSION \
-  --license ../LICENSE --options.bin flaxlight-blockchain --options.name flaxlight-blockchain
+  --arch "$REDHAT_PLATFORM" --options.version $CRYPTODOGE_INSTALLER_VERSION \
+  --license ../LICENSE --options.bin cryptodogelight --options.name cryptodogelight
   LAST_EXIT_CODE=$?
   if [ "$LAST_EXIT_CODE" -ne 0 ]; then
 	  echo >&2 "electron-installer-redhat failed!"

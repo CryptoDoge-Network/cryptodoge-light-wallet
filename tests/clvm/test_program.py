@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from flaxlight.types.blockchain_format.program import Program
+from cryptodogelight.types.blockchain_format.program import Program
 from clvm.EvalError import EvalError
 
 

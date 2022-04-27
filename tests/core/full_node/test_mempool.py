@@ -7,44 +7,44 @@ from typing import Dict, List, Optional, Tuple, Callable
 
 import pytest
 
-import flaxlight.server.ws_connection as ws
+import cryptodogelight.server.ws_connection as ws
 
-from flaxlight.full_node.mempool import Mempool
-from flaxlight.full_node.full_node_api import FullNodeAPI
-from flaxlight.protocols import full_node_protocol, wallet_protocol
-from flaxlight.protocols.wallet_protocol import TransactionAck
-from flaxlight.server.outbound_message import Message
-from flaxlight.simulator.simulator_protocol import FarmNewBlockProtocol
-from flaxlight.types.announcement import Announcement
-from flaxlight.types.blockchain_format.coin import Coin
-from flaxlight.types.blockchain_format.sized_bytes import bytes32
-from flaxlight.types.coin_spend import CoinSpend
-from flaxlight.types.condition_opcodes import ConditionOpcode
-from flaxlight.types.condition_with_args import ConditionWithArgs
-from flaxlight.types.spend_bundle import SpendBundle
-from flaxlight.types.mempool_item import MempoolItem
-from flaxlight.util.clvm import int_to_bytes
-from flaxlight.util.condition_tools import conditions_for_solution, pkm_pairs
-from flaxlight.util.errors import Err
-from flaxlight.util.ints import uint64
-from flaxlight.util.hash import std_hash
-from flaxlight.types.mempool_inclusion_status import MempoolInclusionStatus
-from flaxlight.util.api_decorators import api_request, peer_required, bytes_required
-from flaxlight.full_node.mempool_check_conditions import get_name_puzzle_conditions
-from flaxlight.types.name_puzzle_condition import NPC
-from flaxlight.full_node.pending_tx_cache import PendingTxCache
+from cryptodogelight.full_node.mempool import Mempool
+from cryptodogelight.full_node.full_node_api import FullNodeAPI
+from cryptodogelight.protocols import full_node_protocol, wallet_protocol
+from cryptodogelight.protocols.wallet_protocol import TransactionAck
+from cryptodogelight.server.outbound_message import Message
+from cryptodogelight.simulator.simulator_protocol import FarmNewBlockProtocol
+from cryptodogelight.types.announcement import Announcement
+from cryptodogelight.types.blockchain_format.coin import Coin
+from cryptodogelight.types.blockchain_format.sized_bytes import bytes32
+from cryptodogelight.types.coin_spend import CoinSpend
+from cryptodogelight.types.condition_opcodes import ConditionOpcode
+from cryptodogelight.types.condition_with_args import ConditionWithArgs
+from cryptodogelight.types.spend_bundle import SpendBundle
+from cryptodogelight.types.mempool_item import MempoolItem
+from cryptodogelight.util.clvm import int_to_bytes
+from cryptodogelight.util.condition_tools import conditions_for_solution, pkm_pairs
+from cryptodogelight.util.errors import Err
+from cryptodogelight.util.ints import uint64
+from cryptodogelight.util.hash import std_hash
+from cryptodogelight.types.mempool_inclusion_status import MempoolInclusionStatus
+from cryptodogelight.util.api_decorators import api_request, peer_required, bytes_required
+from cryptodogelight.full_node.mempool_check_conditions import get_name_puzzle_conditions
+from cryptodogelight.types.name_puzzle_condition import NPC
+from cryptodogelight.full_node.pending_tx_cache import PendingTxCache
 from blspy import G2Element
 
-from flaxlight.util.recursive_replace import recursive_replace
+from cryptodogelight.util.recursive_replace import recursive_replace
 from tests.connection_utils import connect_and_get_peer
 from tests.core.node_height import node_height_at_least
 from tests.setup_nodes import bt, setup_simulators_and_wallets
 from tests.time_out_assert import time_out_assert
-from flaxlight.types.blockchain_format.program import Program, INFINITE_COST
-from flaxlight.consensus.cost_calculator import NPCResult
-from flaxlight.types.blockchain_format.program import SerializedProgram
+from cryptodogelight.types.blockchain_format.program import Program, INFINITE_COST
+from cryptodogelight.consensus.cost_calculator import NPCResult
+from cryptodogelight.types.blockchain_format.program import SerializedProgram
 from clvm_tools import binutils
-from flaxlight.types.generator_types import BlockGenerator
+from cryptodogelight.types.generator_types import BlockGenerator
 from clvm.casts import int_from_bytes
 from blspy import G1Element
 
@@ -197,7 +197,7 @@ class TestMempool:
 async def respond_transaction(
     node: FullNodeAPI,
     tx: full_node_protocol.RespondTransaction,
-    peer: ws.WSFlaxConnection,
+    peer: ws.WSCryptodogeConnection,
     tx_bytes: bytes = b"",
     test: bool = False,
 ) -> Tuple[MempoolInclusionStatus, Optional[Err]]:

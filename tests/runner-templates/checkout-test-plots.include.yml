@@ -1,7 +1,7 @@
     - name: Checkout test blocks and plots
       uses: actions/checkout@v2
       with:
-        repository: 'Flax-Network/test-cache'
-        path: '.flaxlight'
+        repository: 'CryptoDoge-Network/test-cache'
+        path: '.cryptodogelight'
         ref: '0.27.0'
         fetch-depth: 1

@@ -3,10 +3,10 @@ from pathlib import Path
 import aiosqlite
 import pytest
 
-from flaxlight.types.full_block import FullBlock
-from flaxlight.types.header_block import HeaderBlock
-from flaxlight.util.db_wrapper import DBWrapper
-from flaxlight.wallet.key_val_store import KeyValStore
+from cryptodogelight.types.full_block import FullBlock
+from cryptodogelight.types.header_block import HeaderBlock
+from cryptodogelight.util.db_wrapper import DBWrapper
+from cryptodogelight.wallet.key_val_store import KeyValStore
 from tests.setup_nodes import bt
 
 

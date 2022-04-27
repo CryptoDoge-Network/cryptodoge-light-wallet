@@ -5,17 +5,17 @@ import logging
 import pytest
 from aiohttp import ClientSession, ClientTimeout, ServerDisconnectedError, WSCloseCode, WSMessage, WSMsgType
 
-from flaxlight.full_node.full_node_api import FullNodeAPI
-from flaxlight.protocols import full_node_protocol
-from flaxlight.protocols.protocol_message_types import ProtocolMessageTypes
-from flaxlight.protocols.shared_protocol import Handshake
-from flaxlight.server.outbound_message import make_msg, Message
-from flaxlight.server.rate_limits import RateLimiter
-from flaxlight.server.server import ssl_context_for_client
-from flaxlight.server.ws_connection import WSFlaxConnection
-from flaxlight.types.peer_info import PeerInfo
-from flaxlight.util.ints import uint16, uint64
-from flaxlight.util.errors import Err
+from cryptodogelight.full_node.full_node_api import FullNodeAPI
+from cryptodogelight.protocols import full_node_protocol
+from cryptodogelight.protocols.protocol_message_types import ProtocolMessageTypes
+from cryptodogelight.protocols.shared_protocol import Handshake
+from cryptodogelight.server.outbound_message import make_msg, Message
+from cryptodogelight.server.rate_limits import RateLimiter
+from cryptodogelight.server.server import ssl_context_for_client
+from cryptodogelight.server.ws_connection import WSCryptodogeConnection
+from cryptodogelight.types.peer_info import PeerInfo
+from cryptodogelight.util.ints import uint16, uint64
+from cryptodogelight.util.errors import Err
 from tests.setup_nodes import self_hostname, setup_simulators_and_wallets
 from tests.time_out_assert import time_out_assert
 
@@ -62,7 +62,7 @@ class TestDos:
         url = f"wss://{self_hostname}:{server_1._port}/ws"
 
         ssl_context = ssl_context_for_client(
-            server_2.flaxlight_ca_crt_path, server_2.flaxlight_ca_key_path, server_2.p2p_crt_path, server_2.p2p_key_path
+            server_2.cryptodogelight_ca_crt_path, server_2.cryptodogelight_ca_key_path, server_2.p2p_crt_path, server_2.p2p_key_path
         )
         ws = await session.ws_connect(
             url, autoclose=True, autoping=True, heartbeat=60, ssl=ssl_context, max_msg_size=100 * 1024 * 1024
@@ -111,7 +111,7 @@ class TestDos:
         url = f"wss://{self_hostname}:{server_1._port}/ws"
 
         ssl_context = ssl_context_for_client(
-            server_2.flaxlight_ca_crt_path, server_2.flaxlight_ca_key_path, server_2.p2p_crt_path, server_2.p2p_key_path
+            server_2.cryptodogelight_ca_crt_path, server_2.cryptodogelight_ca_key_path, server_2.p2p_crt_path, server_2.p2p_key_path
         )
         ws = await session.ws_connect(
             url, autoclose=True, autoping=True, heartbeat=60, ssl=ssl_context, max_msg_size=100 * 1024 * 1024
@@ -157,7 +157,7 @@ class TestDos:
         url = f"wss://{self_hostname}:{server_1._port}/ws"
 
         ssl_context = ssl_context_for_client(
-            server_2.flaxlight_ca_crt_path, server_2.flaxlight_ca_key_path, server_2.p2p_crt_path, server_2.p2p_key_path
+            server_2.cryptodogelight_ca_crt_path, server_2.cryptodogelight_ca_key_path, server_2.p2p_crt_path, server_2.p2p_key_path
         )
         ws = await session.ws_connect(
             url, autoclose=True, autoping=True, heartbeat=60, ssl=ssl_context, max_msg_size=100 * 1024 * 1024
@@ -188,8 +188,8 @@ class TestDos:
 
         assert len(server_1.all_connections) == 1
 
-        ws_con: WSFlaxConnection = list(server_1.all_connections.values())[0]
-        ws_con_2: WSFlaxConnection = list(server_2.all_connections.values())[0]
+        ws_con: WSCryptodogeConnection = list(server_1.all_connections.values())[0]
+        ws_con_2: WSCryptodogeConnection = list(server_2.all_connections.values())[0]
 
         ws_con.peer_host = "1.2.3.4"
         ws_con_2.peer_host = "1.2.3.4"
@@ -241,8 +241,8 @@ class TestDos:
 
         assert len(server_1.all_connections) == 1
 
-        ws_con: WSFlaxConnection = list(server_1.all_connections.values())[0]
-        ws_con_2: WSFlaxConnection = list(server_2.all_connections.values())[0]
+        ws_con: WSCryptodogeConnection = list(server_1.all_connections.values())[0]
+        ws_con_2: WSCryptodogeConnection = list(server_2.all_connections.values())[0]
 
         ws_con.peer_host = "1.2.3.4"
         ws_con_2.peer_host = "1.2.3.4"
@@ -290,8 +290,8 @@ class TestDos:
 
         assert len(server_1.all_connections) == 1
 
-        ws_con: WSFlaxConnection = list(server_1.all_connections.values())[0]
-        ws_con_2: WSFlaxConnection = list(server_2.all_connections.values())[0]
+        ws_con: WSCryptodogeConnection = list(server_1.all_connections.values())[0]
+        ws_con_2: WSCryptodogeConnection = list(server_2.all_connections.values())[0]
 
         ws_con.peer_host = "1.2.3.4"
         ws_con_2.peer_host = "1.2.3.4"

@@ -15,17 +15,17 @@ from blspy import G2Element
 
 from clvm_tools.binutils import assemble
 
-from flaxlight.consensus.blockchain import ReceiveBlockResult
-from flaxlight.consensus.constants import ConsensusConstants
-from flaxlight.types.announcement import Announcement
-from flaxlight.types.blockchain_format.program import Program
-from flaxlight.types.coin_record import CoinRecord
-from flaxlight.types.coin_spend import CoinSpend
-from flaxlight.types.condition_opcodes import ConditionOpcode
-from flaxlight.types.full_block import FullBlock
-from flaxlight.types.spend_bundle import SpendBundle
-from flaxlight.util.errors import Err
-from flaxlight.util.ints import uint32
+from cryptodogelight.consensus.blockchain import ReceiveBlockResult
+from cryptodogelight.consensus.constants import ConsensusConstants
+from cryptodogelight.types.announcement import Announcement
+from cryptodogelight.types.blockchain_format.program import Program
+from cryptodogelight.types.coin_record import CoinRecord
+from cryptodogelight.types.coin_spend import CoinSpend
+from cryptodogelight.types.condition_opcodes import ConditionOpcode
+from cryptodogelight.types.full_block import FullBlock
+from cryptodogelight.types.spend_bundle import SpendBundle
+from cryptodogelight.util.errors import Err
+from cryptodogelight.util.ints import uint32
 from tests.block_tools import create_block_tools, test_constants
 from tests.util.keyring import TempKeyring
 

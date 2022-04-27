@@ -9,14 +9,14 @@ from typing import Dict
 import pytest
 import cProfile
 
-from flaxlight.consensus.block_record import BlockRecord
-from flaxlight.full_node.full_node_api import FullNodeAPI
-from flaxlight.protocols import full_node_protocol as fnp
-from flaxlight.types.condition_opcodes import ConditionOpcode
-from flaxlight.types.condition_with_args import ConditionWithArgs
-from flaxlight.types.unfinished_block import UnfinishedBlock
-from flaxlight.util.clvm import int_to_bytes
-from flaxlight.util.ints import uint64
+from cryptodogelight.consensus.block_record import BlockRecord
+from cryptodogelight.full_node.full_node_api import FullNodeAPI
+from cryptodogelight.protocols import full_node_protocol as fnp
+from cryptodogelight.types.condition_opcodes import ConditionOpcode
+from cryptodogelight.types.condition_with_args import ConditionWithArgs
+from cryptodogelight.types.unfinished_block import UnfinishedBlock
+from cryptodogelight.util.clvm import int_to_bytes
+from cryptodogelight.util.ints import uint64
 from tests.wallet_tools import WalletTool
 
 from tests.connection_utils import add_dummy_connection, connect_and_get_peer

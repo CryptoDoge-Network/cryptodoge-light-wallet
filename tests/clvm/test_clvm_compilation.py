@@ -3,50 +3,50 @@ from unittest import TestCase
 
 from clvm_tools.clvmc import compile_clvm
 
-from flaxlight.types.blockchain_format.program import Program, SerializedProgram
+from cryptodogelight.types.blockchain_format.program import Program, SerializedProgram
 
 wallet_program_files = set(
     [
-        "flaxlight/wallet/puzzles/calculate_synthetic_public_key.clvm",
-        "flaxlight/wallet/puzzles/cat.clvm",
-        "flaxlight/wallet/puzzles/flaxlightlisp_deserialisation.clvm",
-        "flaxlight/wallet/puzzles/rom_bootstrap_generator.clvm",
-        "flaxlight/wallet/puzzles/generator_for_single_coin.clvm",
-        "flaxlight/wallet/puzzles/genesis-by-coin-id-with-0.clvm",
-        "flaxlight/wallet/puzzles/genesis-by-puzzle-hash-with-0.clvm",
-        "flaxlight/wallet/puzzles/everything_with_signature.clvm",
-        "flaxlight/wallet/puzzles/lock.inner.puzzle.clvm",
-        "flaxlight/wallet/puzzles/p2_conditions.clvm",
-        "flaxlight/wallet/puzzles/p2_delegated_conditions.clvm",
-        "flaxlight/wallet/puzzles/p2_delegated_puzzle.clvm",
-        "flaxlight/wallet/puzzles/p2_delegated_puzzle_or_hidden_puzzle.clvm",
-        "flaxlight/wallet/puzzles/p2_m_of_n_delegate_direct.clvm",
-        "flaxlight/wallet/puzzles/p2_puzzle_hash.clvm",
-        "flaxlight/wallet/puzzles/rl_aggregation.clvm",
-        "flaxlight/wallet/puzzles/rl.clvm",
-        "flaxlight/wallet/puzzles/sha256tree_module.clvm",
-        "flaxlight/wallet/puzzles/singleton_top_layer.clvm",
-        "flaxlight/wallet/puzzles/did_innerpuz.clvm",
-        "flaxlight/wallet/puzzles/decompress_puzzle.clvm",
-        "flaxlight/wallet/puzzles/decompress_coin_spend_entry_with_prefix.clvm",
-        "flaxlight/wallet/puzzles/decompress_coin_spend_entry.clvm",
-        "flaxlight/wallet/puzzles/block_program_zero.clvm",
-        "flaxlight/wallet/puzzles/test_generator_deserialize.clvm",
-        "flaxlight/wallet/puzzles/test_multiple_generator_input_arguments.clvm",
-        "flaxlight/wallet/puzzles/p2_singleton.clvm",
-        "flaxlight/wallet/puzzles/pool_waitingroom_innerpuz.clvm",
-        "flaxlight/wallet/puzzles/pool_member_innerpuz.clvm",
-        "flaxlight/wallet/puzzles/singleton_launcher.clvm",
-        "flaxlight/wallet/puzzles/p2_singleton_or_delayed_puzhash.clvm",
-        "flaxlight/wallet/puzzles/delegated_genesis_checker.clvm",
+        "cryptodogelight/wallet/puzzles/calculate_synthetic_public_key.clvm",
+        "cryptodogelight/wallet/puzzles/cat.clvm",
+        "cryptodogelight/wallet/puzzles/cryptodogelightlisp_deserialisation.clvm",
+        "cryptodogelight/wallet/puzzles/rom_bootstrap_generator.clvm",
+        "cryptodogelight/wallet/puzzles/generator_for_single_coin.clvm",
+        "cryptodogelight/wallet/puzzles/genesis-by-coin-id-with-0.clvm",
+        "cryptodogelight/wallet/puzzles/genesis-by-puzzle-hash-with-0.clvm",
+        "cryptodogelight/wallet/puzzles/everything_with_signature.clvm",
+        "cryptodogelight/wallet/puzzles/lock.inner.puzzle.clvm",
+        "cryptodogelight/wallet/puzzles/p2_conditions.clvm",
+        "cryptodogelight/wallet/puzzles/p2_delegated_conditions.clvm",
+        "cryptodogelight/wallet/puzzles/p2_delegated_puzzle.clvm",
+        "cryptodogelight/wallet/puzzles/p2_delegated_puzzle_or_hidden_puzzle.clvm",
+        "cryptodogelight/wallet/puzzles/p2_m_of_n_delegate_direct.clvm",
+        "cryptodogelight/wallet/puzzles/p2_puzzle_hash.clvm",
+        "cryptodogelight/wallet/puzzles/rl_aggregation.clvm",
+        "cryptodogelight/wallet/puzzles/rl.clvm",
+        "cryptodogelight/wallet/puzzles/sha256tree_module.clvm",
+        "cryptodogelight/wallet/puzzles/singleton_top_layer.clvm",
+        "cryptodogelight/wallet/puzzles/did_innerpuz.clvm",
+        "cryptodogelight/wallet/puzzles/decompress_puzzle.clvm",
+        "cryptodogelight/wallet/puzzles/decompress_coin_spend_entry_with_prefix.clvm",
+        "cryptodogelight/wallet/puzzles/decompress_coin_spend_entry.clvm",
+        "cryptodogelight/wallet/puzzles/block_program_zero.clvm",
+        "cryptodogelight/wallet/puzzles/test_generator_deserialize.clvm",
+        "cryptodogelight/wallet/puzzles/test_multiple_generator_input_arguments.clvm",
+        "cryptodogelight/wallet/puzzles/p2_singleton.clvm",
+        "cryptodogelight/wallet/puzzles/pool_waitingroom_innerpuz.clvm",
+        "cryptodogelight/wallet/puzzles/pool_member_innerpuz.clvm",
+        "cryptodogelight/wallet/puzzles/singleton_launcher.clvm",
+        "cryptodogelight/wallet/puzzles/p2_singleton_or_delayed_puzhash.clvm",
+        "cryptodogelight/wallet/puzzles/delegated_genesis_checker.clvm",
     ]
 )
 
 clvm_include_files = set(
-    ["flaxlight/wallet/puzzles/create-lock-puzzlehash.clvm", "flaxlight/wallet/puzzles/condition_codes.clvm"]
+    ["cryptodogelight/wallet/puzzles/create-lock-puzzlehash.clvm", "cryptodogelight/wallet/puzzles/condition_codes.clvm"]
 )
 
-CLVM_PROGRAM_ROOT = "flaxlight/wallet/puzzles"
+CLVM_PROGRAM_ROOT = "cryptodogelight/wallet/puzzles"
 
 
 def list_files(dir, glob):
@@ -73,7 +73,7 @@ class TestClvmCompilation(TestCase):
 
     def test_all_programs_listed(self):
         """
-        Checks to see if a new .clvm file was added to flaxlight/wallet/puzzles, but not added to `wallet_program_files`
+        Checks to see if a new .clvm file was added to cryptodogelight/wallet/puzzles, but not added to `wallet_program_files`
         """
         existing_files = list_files(CLVM_PROGRAM_ROOT, "*.clvm")
         existing_file_paths = set([Path(x).relative_to(CLVM_PROGRAM_ROOT) for x in existing_files])

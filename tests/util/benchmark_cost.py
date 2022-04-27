@@ -4,14 +4,14 @@ from secrets import token_bytes
 from blspy import AugSchemeMPL, PrivateKey
 from clvm_tools import binutils
 
-from flaxlight.consensus.default_constants import DEFAULT_CONSTANTS
-from flaxlight.types.blockchain_format.program import Program, INFINITE_COST
-from flaxlight.types.condition_opcodes import ConditionOpcode
-from flaxlight.types.condition_with_args import ConditionWithArgs
-from flaxlight.util.ints import uint32
+from cryptodogelight.consensus.default_constants import DEFAULT_CONSTANTS
+from cryptodogelight.types.blockchain_format.program import Program, INFINITE_COST
+from cryptodogelight.types.condition_opcodes import ConditionOpcode
+from cryptodogelight.types.condition_with_args import ConditionWithArgs
+from cryptodogelight.util.ints import uint32
 from tests.wallet_tools import WalletTool
-from flaxlight.wallet.derive_keys import master_sk_to_wallet_sk
-from flaxlight.wallet.puzzles.p2_delegated_puzzle import puzzle_for_pk
+from cryptodogelight.wallet.derive_keys import master_sk_to_wallet_sk
+from cryptodogelight.wallet.puzzles.p2_delegated_puzzle import puzzle_for_pk
 
 
 def float_to_str(f):
@@ -29,7 +29,7 @@ def float_to_str(f):
     return float_string
 
 
-def run_and_return_cost_time(flaxlightlisp):
+def run_and_return_cost_time(cryptodogelightlisp):
 
     start = time.time()
     clvm_loop = "((c (q ((c (f (a)) (c (f (a)) (c (f (r (a))) (c (f (r (r (a))))"
@@ -37,7 +37,7 @@ def run_and_return_cost_time(flaxlightlisp):
     " (c (- (f (r (a))) (q 1)) (c (f (r (r (a)))) (q ()))))))"
     " ((c (f (r (r (a)))) (q ()))))) (q (q ()))) (a)))) (a))))"
     loop_program = Program.to(binutils.assemble(clvm_loop))
-    clvm_loop_solution = f"(1000 {flaxlightlisp})"
+    clvm_loop_solution = f"(1000 {cryptodogelightlisp})"
     solution_program = Program.to(binutils.assemble(clvm_loop_solution))
 
     cost, sexp = loop_program.run_with_cost(solution_program, INFINITE_COST)

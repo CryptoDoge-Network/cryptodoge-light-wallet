@@ -5,7 +5,7 @@ from asyncio import CancelledError
 
 import pytest
 
-from flaxlight.full_node.lock_queue import LockQueue, LockClient
+from cryptodogelight.full_node.lock_queue import LockQueue, LockClient
 
 log = logging.getLogger(__name__)
 

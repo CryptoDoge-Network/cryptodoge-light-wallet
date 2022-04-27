@@ -4,13 +4,13 @@ from typing import Optional
 
 import pytest
 
-from flaxlight.consensus.block_record import BlockRecord
-from flaxlight.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
-from flaxlight.full_node.full_node_api import FullNodeAPI
-from flaxlight.protocols import full_node_protocol
-from flaxlight.simulator.simulator_protocol import FarmNewBlockProtocol
-from flaxlight.types.peer_info import PeerInfo
-from flaxlight.util.ints import uint16, uint32
+from cryptodogelight.consensus.block_record import BlockRecord
+from cryptodogelight.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
+from cryptodogelight.full_node.full_node_api import FullNodeAPI
+from cryptodogelight.protocols import full_node_protocol
+from cryptodogelight.simulator.simulator_protocol import FarmNewBlockProtocol
+from cryptodogelight.types.peer_info import PeerInfo
+from cryptodogelight.util.ints import uint16, uint32
 from tests.setup_nodes import self_hostname, setup_simulators_and_wallets
 from tests.time_out_assert import time_out_assert
 

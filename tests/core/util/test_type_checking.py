@@ -2,8 +2,8 @@ import unittest
 from dataclasses import dataclass
 from typing import Dict, List, Optional, Tuple
 
-from flaxlight.util.ints import uint8
-from flaxlight.util.type_checking import is_type_List, is_type_SpecificOptional, strictdataclass
+from cryptodogelight.util.ints import uint8
+from cryptodogelight.util.type_checking import is_type_List, is_type_SpecificOptional, strictdataclass
 
 
 class TestIsTypeList(unittest.TestCase):

@@ -1,10 +1,10 @@
 from typing import Dict
 from unittest import TestCase
 
-from flaxlight.types.blockchain_format.program import Program, SerializedProgram
-from flaxlight.types.generator_types import GeneratorBlockCacheInterface
-from flaxlight.full_node.generator import create_block_generator, create_generator_args
-from flaxlight.util.ints import uint32
+from cryptodogelight.types.blockchain_format.program import Program, SerializedProgram
+from cryptodogelight.types.generator_types import GeneratorBlockCacheInterface
+from cryptodogelight.full_node.generator import create_block_generator, create_generator_args
+from cryptodogelight.util.ints import uint32
 
 gen0 = SerializedProgram.from_bytes(
     bytes.fromhex(

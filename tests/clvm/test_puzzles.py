@@ -3,13 +3,13 @@ from unittest import TestCase
 
 from blspy import AugSchemeMPL, BasicSchemeMPL, G1Element, G2Element
 
-from flaxlight.types.blockchain_format.program import Program
-from flaxlight.types.blockchain_format.sized_bytes import bytes32
-from flaxlight.types.coin_spend import CoinSpend
-from flaxlight.types.spend_bundle import SpendBundle
-from flaxlight.util.condition_tools import ConditionOpcode
-from flaxlight.util.hash import std_hash
-from flaxlight.wallet.puzzles import (
+from cryptodogelight.types.blockchain_format.program import Program
+from cryptodogelight.types.blockchain_format.sized_bytes import bytes32
+from cryptodogelight.types.coin_spend import CoinSpend
+from cryptodogelight.types.spend_bundle import SpendBundle
+from cryptodogelight.util.condition_tools import ConditionOpcode
+from cryptodogelight.util.hash import std_hash
+from cryptodogelight.wallet.puzzles import (
     p2_conditions,
     p2_delegated_conditions,
     p2_delegated_puzzle,

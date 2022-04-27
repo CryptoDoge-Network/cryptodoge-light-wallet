@@ -1,6 +1,6 @@
 import pytest
-from flaxlight.util.misc import format_bytes
-from flaxlight.util.misc import format_minutes
+from cryptodogelight.util.misc import format_bytes
+from cryptodogelight.util.misc import format_minutes
 
 
 class TestMisc:

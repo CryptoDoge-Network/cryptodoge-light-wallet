@@ -6,22 +6,22 @@ import pytest
 from clvm.casts import int_to_bytes
 from colorlog import logging
 
-from flaxlight.consensus.block_rewards import calculate_pool_reward, calculate_base_farmer_reward
-from flaxlight.protocols import wallet_protocol, full_node_protocol
-from flaxlight.protocols.full_node_protocol import RespondTransaction
-from flaxlight.protocols.protocol_message_types import ProtocolMessageTypes
-from flaxlight.protocols.wallet_protocol import RespondToCoinUpdates, CoinStateUpdate, RespondToPhUpdates, CoinState
-from flaxlight.server.outbound_message import NodeType
-from flaxlight.simulator.simulator_protocol import FarmNewBlockProtocol, ReorgProtocol
-from flaxlight.types.blockchain_format.coin import Coin
-from flaxlight.types.coin_record import CoinRecord
-from flaxlight.types.condition_opcodes import ConditionOpcode
-from flaxlight.types.condition_with_args import ConditionWithArgs
-from flaxlight.types.peer_info import PeerInfo
-from flaxlight.types.spend_bundle import SpendBundle
-from flaxlight.util.ints import uint16, uint32, uint64
-from flaxlight.wallet.wallet import Wallet
-from flaxlight.wallet.wallet_state_manager import WalletStateManager
+from cryptodogelight.consensus.block_rewards import calculate_pool_reward, calculate_base_farmer_reward
+from cryptodogelight.protocols import wallet_protocol, full_node_protocol
+from cryptodogelight.protocols.full_node_protocol import RespondTransaction
+from cryptodogelight.protocols.protocol_message_types import ProtocolMessageTypes
+from cryptodogelight.protocols.wallet_protocol import RespondToCoinUpdates, CoinStateUpdate, RespondToPhUpdates, CoinState
+from cryptodogelight.server.outbound_message import NodeType
+from cryptodogelight.simulator.simulator_protocol import FarmNewBlockProtocol, ReorgProtocol
+from cryptodogelight.types.blockchain_format.coin import Coin
+from cryptodogelight.types.coin_record import CoinRecord
+from cryptodogelight.types.condition_opcodes import ConditionOpcode
+from cryptodogelight.types.condition_with_args import ConditionWithArgs
+from cryptodogelight.types.peer_info import PeerInfo
+from cryptodogelight.types.spend_bundle import SpendBundle
+from cryptodogelight.util.ints import uint16, uint32, uint64
+from cryptodogelight.wallet.wallet import Wallet
+from cryptodogelight.wallet.wallet_state_manager import WalletStateManager
 from tests.connection_utils import add_dummy_connection
 from tests.setup_nodes import self_hostname, setup_simulators_and_wallets, bt
 from tests.time_out_assert import time_out_assert
